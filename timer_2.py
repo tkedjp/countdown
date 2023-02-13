@@ -67,17 +67,18 @@ def Timer():
         time.sleep(1)
 
         if (times==0):
+            unlock_button()
             playsound("bell.mp3")
             sec.set("00")
             min.set("0")
-            unlock_button()
+            time_frame.update()
+            stop_counter = True
         
         if stop_counter:
             stop_counter = False
             return
 
         times -= 1
-        # print(times)
 
         if times < 16:
             min_label.config(fg='red')
