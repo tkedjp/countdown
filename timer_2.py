@@ -9,6 +9,7 @@ from playsound import playsound
 # ウィンドウの作成
 root = tkinter.Tk()
 root.title('タイマー')
+root.iconbitmap('timer.ico')
 root.geometry('350x320')
 root.resizable(0, 0)
 
@@ -48,12 +49,17 @@ def unlock_button():
     five_mins_button.config(state=NORMAL)
     start_button.config(state=NORMAL)
 
-def Timer():
-    global sec,min,stop_counter
+def lock_button():
     three_mins_button.config(state=DISABLED)
     four_mins_button.config(state=DISABLED)
     five_mins_button.config(state=DISABLED)
     start_button.config(state=DISABLED)
+
+def Timer():
+    global sec,min,stop_counter
+    # unlock_button()
+    lock_button()
+    # start_button.config(state=DISABLED)
 
     times=int(min.get())*60+int(sec.get())
 
@@ -68,7 +74,7 @@ def Timer():
 
         if (times==0):
             unlock_button()
-            playsound("bell.mp3")
+            playsound('chime.wav')
             sec.set("00")
             min.set("0")
             time_frame.update()
@@ -86,20 +92,24 @@ def Timer():
             sec_label.config(fg='red')
 
 def three():
+    unlock_button()
     min.set("3")
     sec.set("00")
 
 def four():
+    unlock_button()
     min.set("4")
     sec.set("00")
 
 def five():
+    unlock_button()
     min.set("5")
     sec.set("00")
 
 def stop():
     global sec,min,stop_counter
     unlock_button()
+    start_button.config(state=DISABLED)
 
     sec.set("00")
     min.set("0")
@@ -115,7 +125,7 @@ five_mins_button = Button(time_select_frame, text='5分', command=five)
 five_mins_button.grid(row=1, column=3, padx=5, pady=20, ipadx=3, ipady=3)
 
 #ボタン
-start_button = Button(button_frame, text='START', command=Timer)
+start_button = Button(button_frame, text='START', command=Timer, state=DISABLED)
 start_button.grid(row=1, column=1, padx=5, pady=20, ipadx=3, ipady=3)
 stop_button = Button(button_frame, text='STOP', command=stop)
 stop_button.grid(row=1, column=2, padx=5, pady=20, ipadx=3, ipady=3)
