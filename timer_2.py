@@ -86,8 +86,8 @@ def Timer():
             sec_label.config(fg='red')
 
 def three():
-    min.set("0")
-    sec.set("05")
+    min.set("3")
+    sec.set("00")
 
 def four():
     min.set("4")
