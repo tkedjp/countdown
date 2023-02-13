@@ -8,3 +8,5 @@
 残り15秒になると表示が赤になり,0秒になるとチャイムが鳴ります。
 
 [mac](https://github.com/tkedjp/countdown/blob/main/timer_mac.zip)版と[windows](https://github.com/tkedjp/countdown/blob/main/timer_win.zip)版があります。
+
+mac版はConsoleベースの動作になります。
