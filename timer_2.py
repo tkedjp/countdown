@@ -39,8 +39,21 @@ sec_label.grid(row=1, column=4, padx=5, pady=15, ipadx=4, ipady=4)
 
 stop_counter = False
 
+def unlock_button():
+    min_label.config(fg='black')
+    colon_label.config(fg='black')
+    sec_label.config(fg='black')
+    three_mins_button.config(state=NORMAL)
+    four_mins_button.config(state=NORMAL)
+    five_mins_button.config(state=NORMAL)
+    start_button.config(state=NORMAL)
+
 def Timer():
     global sec,min,stop_counter
+    three_mins_button.config(state=DISABLED)
+    four_mins_button.config(state=DISABLED)
+    five_mins_button.config(state=DISABLED)
+    start_button.config(state=DISABLED)
 
     times=int(min.get())*60+int(sec.get())
 
@@ -57,16 +70,23 @@ def Timer():
             playsound("bell.mp3")
             sec.set("00")
             min.set("0")
-
+            unlock_button()
+        
         if stop_counter:
             stop_counter = False
             return
 
         times -= 1
+        # print(times)
+
+        if times < 16:
+            min_label.config(fg='red')
+            colon_label.config(fg='red')
+            sec_label.config(fg='red')
 
 def three():
-    min.set("3")
-    sec.set("00")
+    min.set("0")
+    sec.set("05")
 
 def four():
     min.set("4")
@@ -78,7 +98,8 @@ def five():
 
 def stop():
     global sec,min,stop_counter
-    # start_flag = False
+    unlock_button()
+
     sec.set("00")
     min.set("0")
     time_frame.update()
