@@ -11,5 +11,3 @@
 <img width="348" alt="スクリーンショット 2023-02-13 21 38 44" src="https://user-images.githubusercontent.com/120151701/218459853-8ed1acbd-7049-4460-bc8a-b44789478a5d.png">
 
 [mac](https://github.com/tkedjp/countdown/blob/main/timer_mac.zip)版と[windows](https://github.com/tkedjp/countdown/blob/main/timer_win.zip)版があります。
-
-mac版はConsoleベースの動作になります。
