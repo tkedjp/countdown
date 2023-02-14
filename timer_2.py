@@ -5,6 +5,7 @@ from tkmacosx import Button
 from time import sleep
 import time
 from playsound import playsound
+import os
 
 # ウィンドウの作成
 root = tkinter.Tk()
@@ -74,7 +75,13 @@ def Timer():
 
         if (times==0):
             unlock_button()
-            playsound('chime.wav')
+            # ptyhonファイルのフルパス取得
+            print(os.path.abspath(__file__))
+            dir_name = (os.path.dirname(os.path.abspath(__file__)))
+            # print(dir_name)
+            # file = dir_name+'/chime.wav'
+            # print(file)
+            playsound(dir_name+'/chime.wav')
             sec.set("00")
             min.set("0")
             time_frame.update()
